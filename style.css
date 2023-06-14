@@ -6,6 +6,10 @@
     margin-bottom: 50px;
 }
 
+.container input{
+    padding: 0;
+}
+
 .container1{
     display: flex;
     flex-direction: column;
