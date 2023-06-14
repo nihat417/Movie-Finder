@@ -82,8 +82,29 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 ${field.slice(1).reduce((k, f) => k += `<li class="list-group-item"><b>${f}: </b>${movie[f]}</li>`, '')}
+                                <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal-${movie.imdbID}">Show Details</button>
                             </ul>
-                        </div>`
+                        </div>`,
+                
+                kod += `<div class="modal fade" id="modal-${movie.imdbID}" tabindex="-1" aria-labelledby="modal-${movie.imdbID}-label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-${movie.imdbID}-label">${movie.Title}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="${movie.Poster}" class="img-fluid mb-3" alt="no photo">
+                                <ul>
+                                    ${field.reduce((k, f) => k += `<li><b>${f}: </b>${movie[f]}</li>`, '')}
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
            })
            wrapper.innerHTML = `<div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center mx-2">${kod}</div>`
         }
